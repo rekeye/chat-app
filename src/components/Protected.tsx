@@ -17,13 +17,20 @@ const Protected = (Comp: ProtectedComponent) => {
         }
 
 				if (!event.request.url.endsWith("/welcome")) {
-					const user = await prisma.user.findUnique({ where: { email: session.user.email as string } })
-					if (!user) {
-						throw redirect("/welcome")
+					const user = await prisma.user.findUnique({ where: { email: session.user.email as string } });
+					if (!user)
+						throw redirect("/welcome");
+					return {
+						...session,
+						user: {
+							name: user.name,
+							email: session.user.email,
+							image: user.image,
+						}
 					}
 				}
 
-        return session;
+				return session;
       },
       { key: () => ["auth_user"] }
     );
