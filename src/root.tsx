@@ -26,10 +26,10 @@ export default function Root() {
 				<Meta charset="utf-8" />
 				<Meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Body class="min-h-screen flex flex-col bg-slate-700 text-white">
+			<Body class="min-h-screen flex flex-col bg-neutral-600 text-white">
 				<Suspense>
 					<ErrorBoundary>
-						<header class="py-2 px-4 flex justify-between items-center bg-slate-900">
+						<header class="py-2 px-4 flex justify-between items-center bg-neutral-900 shadow">
 							<A href="/" class="text-lg">Chat app</A>
 							<Show when={session()?.user}>
 								<LogoutButton />
